@@ -34,6 +34,7 @@ setTimeout(() => {
   window.toastify("A new User have Successful Register","success")
 }, 500);
 
+console.log('user',user)
 }
 
   return (
