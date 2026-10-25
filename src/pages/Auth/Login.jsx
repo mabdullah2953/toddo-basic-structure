@@ -1,6 +1,6 @@
 import {  Typography,Form, Input, Button } from "antd"
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useAuth } from "../../context/Auth"
 const {Title,Paragraph} =Typography
 
@@ -9,7 +9,7 @@ const Login = () => {
   const {dispatch} = useAuth()
 const [state,setState] = useState(initialState)
 const [isProcessing,setIsProcessing] = useState(false)
-const navigate = useNavigate()
+
 
 const handleChange = e=>setState(state=>({...state,[e.target.name]:e.target.value}))
 const handleLogin = ()=>{
@@ -20,16 +20,20 @@ const users =JSON.parse(localStorage.getItem("users"))|| []
 const user = users.find(user=>user.email===email && user.password===password)
 
 if (!user) { 
-  localStorage.setItem("user", JSON.stringify(user))
-dispatch({ isAuth: true, user })
-navigate("/")
+  
   setIsProcessing(false)
-  return window.toastify("invaild Email or  Password","error")}
+  return window.toastify("invaild Email or  Password","error" )
+}
+localStorage.setItem("user", JSON.stringify(user))
+dispatch({ isAuth: true, user })
+
  
 
 setTimeout(() => {
   setIsProcessing(false)
+
   window.toastify(" Login Successfully ","success")
+
 }, 500);
 
 }
@@ -44,6 +48,9 @@ setTimeout(() => {
           </Title>
           <Paragraph className="text-center">
            Don't have an Account <Link to="/auth/register">Create Account</Link> 
+          </Paragraph>
+          <Paragraph className="text-center">
+           Forgot Password<Link to="/auth/forgot-password"> Reset Password</Link> 
           </Paragraph>
           <Form layout="vertical">
                        <Form.Item label="Email" required>

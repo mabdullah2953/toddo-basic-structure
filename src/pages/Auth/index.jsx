@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import Login from "./Login"
-import ResetPassword from "./ResetPassword"
+
 import ForgotPassword from "./ForgotPassword"
 import Register from "./Register"
 import NoPage from "../../components/Misc/NoPage"
@@ -12,7 +12,7 @@ const Auth = () => {
         <Route path="login" element={<Login/>}/>
           <Route path="register" element={<Register/>}/>
             <Route path="forgoot-password" element={<ForgotPassword/>}/>
-              <Route path="reset-password" element={<ResetPassword/>}/>
+           
                 <Route path="*" element={<NoPage/>}/>
     </Routes>
     </>

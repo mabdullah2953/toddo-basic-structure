@@ -1,5 +1,5 @@
 import { createContext, useContext, useState,useEffect } from "react"
-import { jsxs } from "react/jsx-runtime"
+
 
 const Auth =  createContext()
 const initialState = {isAuth:false,user:{}}
@@ -24,9 +24,9 @@ setState ({isAuth:true,user})
  [])
 
  const handleLogout =()=>{
-    
-    localStorage.removeItem("user")
     setState(initialState)
+    localStorage.removeItem("user")
+ 
  }
 
 
